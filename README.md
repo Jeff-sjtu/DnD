@@ -19,8 +19,8 @@ This repo contains the code of our paper:
 ## Citing
 If you find our code or paper useful, please consider citing
 
-    @inproceedings{li2020hybrik,
-        title={D&D: Learning Human Dynamics from Dynamic Camera},
+    @inproceedings{li2022dnd,
+        title={D\&D: Learning Human Dynamics from Dynamic Camera},
         author={Li, Jiefeng and Bian, Siyuan and Xu, Chao and Liu, Gang and Yu, Gang and Lu, Cewu},
         booktitle={European Conference on Computer Vision},
         year={2022}
