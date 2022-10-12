@@ -1,0 +1,67 @@
+DATASET:
+  TRAINSET_LIST_3D:
+    - NAME: 'ThreeDPW'
+      ROOT: './data/preprocessed_data/'
+      ANN_FILE: '3dpw_train_occ_db.pt'
+      W: 0.3
+    - NAME: 'Human36M'
+      ROOT: './data/preprocessed_data/'
+      ANN_FILE: 'h36m_train_25fps_occ_smpl_db.pt'
+      W: 0.3
+    - NAME: 'AMASS'
+      ROOT: './data/preprocessed_data/'
+      ANN_FILE: 'amass_kp49.pt'
+      W: 0.4
+  VALSET:
+    NAME: 'ThreeDPW'
+    ROOT: './data/preprocessed_data_val/'
+    ANN_FILE: '3dpw_test_db.pt'
+  TESTSET:
+    - NAME: 'Human36M'
+      ROOT: './data/preprocessed_data_val/'
+      ANN_FILE: 'h36m_test_front_25fps_tight_smpl_db.pt'
+    - NAME: 'ThreeDPW'
+      ROOT: './data/preprocessed_data_val/'
+      ANN_FILE: '3dpw_val_db.pt'
+    - NAME: 'ThreeDPW'
+      ROOT: './data/preprocessed_data_val/'
+      ANN_FILE: '3dpw_test_db.pt'
+DATA_PRESET:
+  SEQLEN: 32
+  TEST_OVERLAP: True
+  DATA_AMASS_RATIO: 0.6
+  VIDEO: False
+MODEL:
+  TYPE: 'DND'
+  TEMPORAL_TYPE: 'gru'
+  TRAIN_TYPE: 'all'
+  PRETRAIN_ENC: ''
+LOSS:
+  TYPE: 'LossTransl'
+  WEIGHT:
+    KP_2D_W: 300.0
+    KP_3D_W: 300.0
+    KP_3D_ACCEL_W: 300.0
+    SHAPE_W: 0.06
+    POSE_W: 300.0
+    CONTACT_W: 100.0
+    INERTIA_W: 0.00001
+    G_TRANSL_W: 100.0
+    D_MOTION_LOSS_W: 1
+TEST:
+  EVAL_TYPE: 'all'
+TRAIN:
+  NUM_WORKERS: 8
+  BATCH_SIZE: 32
+  BEGIN_EPOCH: 0
+  END_EPOCH: 30
+  NUM_ITERS_PER_EPOCH: 500
+  OPTIMIZER: 'adam'
+  LR: 0.00005
+  WD: 0.0
+  LR_PATIENCE: 5
+  LR_SCHD: 'multi-step'
+  LR_STEP:
+  - 20
+  - 25
+  LR_FACTOR: 0.1

@@ -3,7 +3,7 @@
 This repo contains the code of our paper:
 
 
-> [D&D: Learning Human Dynamics from Dynamic Camera]()  
+> [D&D: Learning Human Dynamics from Dynamic Camera](https://arxiv.org/abs/2209.08790)  
 > Jiefeng Li, Siyuan Bian, Chao Xu, Gang Liu, Gang Yu, Cewu Lu  
 > ECCV 2022 Oral  
 
@@ -14,7 +14,17 @@ This repo contains the code of our paper:
 
 ![dnd](assets/dnd.png)
 
-*Comming soon*
+## Train from scratch
+
+``` bash
+python ./scripts/train.py --exp-id ${EXPID} --cfg ${CONFIG} --gpu ${GPU} --seed 1
+```
+
+## Evaluation
+``` bash
+python ./scripts/validate.py --cfg ${CONFIG} --ckpt ${CKPT} --gpu ${GPU}
+```
+
 
 ## Citing
 If you find our code or paper useful, please consider citing
