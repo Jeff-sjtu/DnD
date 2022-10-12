@@ -445,7 +445,7 @@ class DynamicsSubNet(nn.Module):
 
         pred_cam_old = pred_cam.clone()
         transl_old = transl.clone()
-
+        direct_gt = False
         # print(transl[0, :], transl[-1, :], 'transl orig')
 
         pred_transl = transl.reshape(-1, seq_len, 3)

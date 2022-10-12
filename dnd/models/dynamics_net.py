@@ -21,7 +21,7 @@ import torch.nn as nn
 import torch.nn.functional as F
 
 from .builder import MODEL
-from .dynamics_net import DynamicsSubNet
+from .subnet import DynamicsSubNet
 
 
 @MODEL.register_module
@@ -55,7 +55,7 @@ class DND(nn.Module):
         # )
 
         self.use_smplx = True
-        self.regressor = Regressor6dDyna(use_smplx=self.use_smplx, dtype=torch.float32)
+        self.regressor = DynamicsSubNet(use_smplx=self.use_smplx, dtype=torch.float32)
         self.epoch = 0
 
         if pretrained and os.path.isfile(pretrained):
